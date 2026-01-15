@@ -167,7 +167,7 @@ function calcular() {
     );
 
     /* MELD-Na */
-    let naAdj = Math.max(125, Math.min(140, na));
+    let naAdj = Math.max(125, Math.min(137, na));
     const meldNa = Math.round(
         meld + 1.32 * (137 - naAdj) - 0.033 * meld * (137 - naAdj)
     );
