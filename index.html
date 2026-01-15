@@ -52,8 +52,6 @@
             border: 2px solid #bdc3c7;
             cursor: pointer;
         }
-        .radio-option:first-child { border-radius: 8px 0 0 8px; }
-        .radio-option:last-child { border-radius: 0 8px 8px 0; }
         .radio-option.selected {
             background: #a788ab;
             color: #fff;
@@ -69,22 +67,13 @@
             cursor: pointer;
             margin-top: 6px;
         }
-        button:hover { background: #8d6e78; }
         .button-limpar { background: #FF6347; }
-        .button-limpar:hover { background: #e55347; }
         .result {
             margin-top: 15px;
             text-align: center;
-            font-size: 1em;
             font-weight: bold;
         }
         .result span { color: #e74c3c; }
-        .credits {
-            margin-top: 10px;
-            font-size: 0.75em;
-            text-align: center;
-            color: #7f8c8d;
-        }
     </style>
 </head>
 <body>
@@ -133,10 +122,6 @@
     <button class="button-limpar" onclick="limpar()">Limpar</button>
 
     <div class="result" id="resultado"></div>
-
-    <div class="credits">
-        Desenvolvido por Afonso H. e Patrick R.
-    </div>
 </div>
 
 <script>
@@ -160,13 +145,13 @@ function selectHD(v) {
 function calcular() {
     const ln = Math.log;
 
-    let bil = Math.max(1, parseFloat(bilirrubina.value) || 1);
-    let inr = Math.max(1, parseFloat(rni.value) || 1);
-    let cr = Math.max(1, parseFloat(creatinina.value) || 1);
-    let na = parseFloat(sodio.value) || 137;
-    let alb = parseFloat(albumina.value) || 3.5;
+    let bil = Math.max(1, parseFloat(document.getElementById('bilirubina').value) || 1);
+    let inr = Math.max(1, parseFloat(document.getElementById('rni').value) || 1);
+    let cr = Math.max(1, parseFloat(document.getElementById('creatinina').value) || 1);
+    let na = parseFloat(document.getElementById('sodio').value) || 137;
+    let alb = parseFloat(document.getElementById('albumina').value) || 3.5;
 
-    /* ===== MELD CLÁSSICO ===== */
+    /* MELD */
     let crMeld = (cr > 4 || hd === 'sim') ? 4 : cr;
     const meld = Math.round(
         9.57 * ln(crMeld) +
@@ -175,13 +160,13 @@ function calcular() {
         6.42
     );
 
-    /* ===== MELD-Na ===== */
+    /* MELD-Na */
     let naAdj = Math.max(125, Math.min(140, na));
     const meldNa = Math.round(
         meld + 1.32 * (137 - naAdj) - 0.033 * meld * (137 - naAdj)
     );
 
-    /* ===== MELD 3.0 ===== */
+    /* MELD 3.0 */
     na = Math.max(125, Math.min(137, na));
     alb = Math.max(1.5, Math.min(3.5, alb));
     let cr3 = (cr > 3 || hd === 'sim') ? 3 : cr;
@@ -199,7 +184,7 @@ function calcular() {
         6
     );
 
-    resultado.innerHTML = `
+    document.getElementById('resultado').innerHTML = `
         MELD: <span>${meld}</span><br>
         MELD-Na: <span>${meldNa}</span><br>
         MELD 3.0: <span>${meld3}</span>
@@ -210,7 +195,7 @@ function limpar() {
     document.querySelectorAll('input').forEach(i => i.value = '');
     selectSexo('masculino');
     selectHD('nao');
-    resultado.innerHTML = '';
+    document.getElementById('resultado').innerHTML = '';
 }
 </script>
 
