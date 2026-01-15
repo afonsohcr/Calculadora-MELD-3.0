@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora MELD 3.0</title>
+    <title>Calculadora MELD</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Preston:wght@400;700&display=swap">
     <style>
         body {
@@ -16,217 +16,202 @@
             margin: 0;
         }
         .calculator {
-            background: #ffffff;
+            background: #fff;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             padding: 20px;
-            width: 320px;
+            width: 340px;
             max-width: 95%;
-            display: flex;
-            flex-direction: column;
         }
         h1 {
-            font-size: 1.5em;
-            color: #a788ab;
             text-align: center;
+            color: #a788ab;
             margin-bottom: 15px;
         }
-        .form-group {
-            margin-bottom: 12px;
-        }
+        .form-group { margin-bottom: 12px; }
         label {
-            display: block;
-            margin-bottom: 6px;
             font-weight: 600;
-            color: #2c3e50;
             font-size: 0.9em;
+            margin-bottom: 6px;
+            display: block;
         }
         input[type="number"] {
             width: 100%;
             padding: 8px;
-            border: 1px solid #bdc3c7;
             border-radius: 8px;
-            font-size: 0.9em;
+            border: 1px solid #bdc3c7;
         }
         .radio-group {
             display: flex;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .radio-option {
             flex: 1;
-            height: 35px;
-            line-height: 35px;
             text-align: center;
+            padding: 8px;
             border: 2px solid #bdc3c7;
             cursor: pointer;
-            font-size: 0.9em;
         }
-        .radio-option:first-child {
-            border-radius: 8px 0 0 8px;
-        }
-        .radio-option:last-child {
-            border-radius: 0 8px 8px 0;
-        }
+        .radio-option:first-child { border-radius: 8px 0 0 8px; }
+        .radio-option:last-child { border-radius: 0 8px 8px 0; }
         .radio-option.selected {
-            background-color: #a788ab;
-            color: white;
+            background: #a788ab;
+            color: #fff;
             border-color: #a788ab;
         }
-        .button-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 10px;
-        }
         button {
-            background-color: #a788ab;
-            color: white;
-            border: none;
+            width: 100%;
             padding: 10px;
+            border: none;
             border-radius: 8px;
+            background: #a788ab;
+            color: #fff;
             cursor: pointer;
-            font-size: 0.9em;
+            margin-top: 6px;
         }
-        button:hover {
-            background-color: #8d6e78;
-        }
-        .button-limpar {
-            background-color: #FF6347;
-        }
-        .button-limpar:hover {
-            background-color: #e55347;
-        }
+        button:hover { background: #8d6e78; }
+        .button-limpar { background: #FF6347; }
+        .button-limpar:hover { background: #e55347; }
         .result {
             margin-top: 15px;
-            font-size: 1.2em;
+            text-align: center;
+            font-size: 1em;
             font-weight: bold;
-            text-align: center;
-            color: #2c3e50;
         }
-        .result span {
-            color: #e74c3c;
-        }
+        .result span { color: #e74c3c; }
         .credits {
-            margin-top: 15px;
+            margin-top: 10px;
             font-size: 0.75em;
-            color: #7f8c8d;
             text-align: center;
+            color: #7f8c8d;
         }
     </style>
 </head>
 <body>
 
 <div class="calculator">
-    <h1>Calculadora MELD 3.0</h1>
+    <h1>Calculadora MELD</h1>
 
-    <div class="form-group">
-        <label>Sexo:</label>
-        <div class="radio-group">
-            <div class="radio-option selected" id="sexo-masculino" onclick="selectSexo('masculino')">Masculino</div>
-            <div class="radio-option" id="sexo-feminino" onclick="selectSexo('feminino')">Feminino</div>
-        </div>
+    <label>Sexo:</label>
+    <div class="radio-group">
+        <div class="radio-option selected" id="sexo-masculino" onclick="selectSexo('masculino')">Masculino</div>
+        <div class="radio-option" id="sexo-feminino" onclick="selectSexo('feminino')">Feminino</div>
     </div>
 
     <div class="form-group">
-        <label for="albumina">Albumina (g/dL):</label>
-        <input type="number" id="albumina" step="any" min="0">
+        <label>Albumina (g/dL):</label>
+        <input type="number" id="albumina" step="any">
     </div>
 
     <div class="form-group">
-        <label for="bilirubina">Bilirrubina (mg/dL):</label>
-        <input type="number" id="bilirubina" step="any" min="0">
+        <label>Bilirrubina (mg/dL):</label>
+        <input type="number" id="bilirubina" step="any">
     </div>
 
     <div class="form-group">
-        <label for="rni">INR:</label>
-        <input type="number" id="rni" step="any" min="0">
+        <label>INR:</label>
+        <input type="number" id="rni" step="any">
     </div>
 
     <div class="form-group">
-        <label for="creatinina">Creatinina (mg/dL):</label>
-        <input type="number" id="creatinina" step="any" min="0">
+        <label>Creatinina (mg/dL):</label>
+        <input type="number" id="creatinina" step="any">
     </div>
 
     <div class="form-group">
-        <label for="sodio">Sódio (mEq/L):</label>
-        <input type="number" id="sodio" step="any" min="0">
+        <label>Sódio (mEq/L):</label>
+        <input type="number" id="sodio" step="any">
     </div>
 
     <label>Hemodiálise ≥ 2 sessões na última semana?</label>
     <div class="radio-group">
-        <div class="radio-option" id="hemodialise-sim" onclick="selectHemodialise('sim')">Sim</div>
-        <div class="radio-option selected" id="hemodialise-nao" onclick="selectHemodialise('nao')">Não</div>
+        <div class="radio-option" id="hd-sim" onclick="selectHD('sim')">Sim</div>
+        <div class="radio-option selected" id="hd-nao" onclick="selectHD('nao')">Não</div>
     </div>
 
-    <div class="button-group">
-        <button onclick="calcularMeld3()">Calcular MELD 3.0</button>
-        <button class="button-limpar" onclick="limparCampos()">Limpar</button>
-    </div>
+    <button onclick="calcular()">Calcular</button>
+    <button class="button-limpar" onclick="limpar()">Limpar</button>
 
-    <div id="resultado" class="result"></div>
+    <div class="result" id="resultado"></div>
 
     <div class="credits">
-        Desenvolvido por Franklin R. e Patrick R.
+        Desenvolvido por Afonso H. e Patrick R.
     </div>
 </div>
 
 <script>
-    let sexo = 'masculino';
-    let hemodialise = 'nao';
+let sexo = 'masculino';
+let hd = 'nao';
 
-    function selectSexo(valor) {
-        sexo = valor;
-        document.querySelectorAll('#sexo-masculino, #sexo-feminino')
-            .forEach(el => el.classList.remove('selected'));
-        document.getElementById(`sexo-${valor}`).classList.add('selected');
-    }
+function selectSexo(v) {
+    sexo = v;
+    document.querySelectorAll('#sexo-masculino,#sexo-feminino')
+        .forEach(e => e.classList.remove('selected'));
+    document.getElementById(`sexo-${v}`).classList.add('selected');
+}
 
-    function selectHemodialise(valor) {
-        hemodialise = valor;
-        document.querySelectorAll('#hemodialise-sim, #hemodialise-nao')
-            .forEach(el => el.classList.remove('selected'));
-        document.getElementById(`hemodialise-${valor}`).classList.add('selected');
-    }
+function selectHD(v) {
+    hd = v;
+    document.querySelectorAll('#hd-sim,#hd-nao')
+        .forEach(e => e.classList.remove('selected'));
+    document.getElementById(`hd-${v}`).classList.add('selected');
+}
 
-    function calcularMeld3() {
-        const ln = Math.log;
+function calcular() {
+    const ln = Math.log;
 
-        let bilirrubina = Math.max(1, parseFloat(document.getElementById('bilirubina').value) || 1);
-        let inr = Math.max(1, parseFloat(document.getElementById('rni').value) || 1);
-        let creatinina = Math.max(1, parseFloat(document.getElementById('creatinina').value) || 1);
-        let sodio = parseFloat(document.getElementById('sodio').value) || 137;
-        let albumina = parseFloat(document.getElementById('albumina').value) || 3.5;
+    let bil = Math.max(1, parseFloat(bilirrubina.value) || 1);
+    let inr = Math.max(1, parseFloat(rni.value) || 1);
+    let cr = Math.max(1, parseFloat(creatinina.value) || 1);
+    let na = parseFloat(sodio.value) || 137;
+    let alb = parseFloat(albumina.value) || 3.5;
 
-        sodio = Math.max(125, Math.min(137, sodio));
-        albumina = Math.max(1.5, Math.min(3.5, albumina));
+    /* ===== MELD CLÁSSICO ===== */
+    let crMeld = (cr > 4 || hd === 'sim') ? 4 : cr;
+    const meld = Math.round(
+        9.57 * ln(crMeld) +
+        3.78 * ln(bil) +
+        11.2 * ln(inr) +
+        6.42
+    );
 
-        if (creatinina > 3 || hemodialise === 'sim') {
-            creatinina = 3;
-        }
+    /* ===== MELD-Na ===== */
+    let naAdj = Math.max(125, Math.min(140, na));
+    const meldNa = Math.round(
+        meld + 1.32 * (137 - naAdj) - 0.033 * meld * (137 - naAdj)
+    );
 
-        const feminino = sexo === 'feminino' ? 1 : 0;
+    /* ===== MELD 3.0 ===== */
+    na = Math.max(125, Math.min(137, na));
+    alb = Math.max(1.5, Math.min(3.5, alb));
+    let cr3 = (cr > 3 || hd === 'sim') ? 3 : cr;
+    const fem = sexo === 'feminino' ? 1 : 0;
 
-        const meld3 =
-            1.33 * feminino +
-            4.56 * ln(bilirrubina) +
-            0.82 * (137 - sodio) -
-            0.24 * (137 - sodio) * ln(bilirrubina) +
-            9.09 * ln(inr) +
-            11.14 * ln(creatinina) +
-            1.85 * (3.5 - albumina) -
-            1.83 * (3.5 - albumina) * ln(creatinina) +
-            6;
+    const meld3 = Math.round(
+        1.33 * fem +
+        4.56 * ln(bil) +
+        0.82 * (137 - na) -
+        0.24 * (137 - na) * ln(bil) +
+        9.09 * ln(inr) +
+        11.14 * ln(cr3) +
+        1.85 * (3.5 - alb) -
+        1.83 * (3.5 - alb) * ln(cr3) +
+        6
+    );
 
-        document.getElementById('resultado').innerHTML =
-            `MELD 3.0: <span>${Math.round(meld3)}</span>`;
-    }
+    resultado.innerHTML = `
+        MELD: <span>${meld}</span><br>
+        MELD-Na: <span>${meldNa}</span><br>
+        MELD 3.0: <span>${meld3}</span>
+    `;
+}
 
-    function limparCampos() {
-        document.querySelectorAll('input').forEach(i => i.value = '');
-        selectSexo('masculino');
-        selectHemodialise('nao');
-        document.getElementById('resultado').innerHTML = '';
-    }
+function limpar() {
+    document.querySelectorAll('input').forEach(i => i.value = '');
+    selectSexo('masculino');
+    selectHD('nao');
+    resultado.innerHTML = '';
+}
 </script>
 
 </body>
